@@ -1,2 +1,2 @@
-# agnesi-particles
-Simple Agnesi Function Based Ionic Particle System
+![](readme_pages/1.png)
+![](readme_pages/2.png)
