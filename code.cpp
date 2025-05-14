@@ -69,7 +69,7 @@ void update() {
     SDL_RenderClear(renderer);
     for (Particle &p : particles) {
         References values=get_energy_values(p.x, p.y);
-        array<float, 2> forces = {values.n-values.s, values.e-values.w}; 
+        array<float, 2> forces = {values.s-values.n, values.w-values.e}; 
         if (p.x<(screenWidth/2)/scale && p.y>(-screenHeight/2)/scale) {
             float red = 100+(p.k==1)*80-(values.p<2)*100;
             float green = (values.p<2)*180;
@@ -77,7 +77,8 @@ void update() {
             pixel(p.x*scale+screenWidth/2, p.y*scale+screenHeight/2, red, green, blue); 
         } float xForceValue = p.k*forces[1];
         float yForceValue = p.k*forces[0];
-        p.x -= xForceValue; p.y-=yForceValue;
+        p.x += xForceValue; 
+        p.y += yForceValue;
     } SDL_RenderPresent(renderer);
 }
 int main() {
